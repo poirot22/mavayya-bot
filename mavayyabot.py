@@ -3,8 +3,6 @@ import random
 import os
 from keep_online import keep_alive
 
-
-
 intents = discord.Intents.default()
 intents.members = True
 
