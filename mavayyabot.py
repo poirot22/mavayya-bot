@@ -37,7 +37,6 @@ async def on_message(message):
 	    await message.channel.send(random.choice(mavayya_maatalu))
 
   bad_words=[
-    "dengey",
     "lauda",
     "modda",
     "sulli",
@@ -47,7 +46,9 @@ async def on_message(message):
     "kutha",
     "lawda",
     "lowda",
-    "puku"
+    "puku",
+    " fuck",
+    " ass " 
   ]
 
   for i in bad_words:
@@ -60,11 +61,6 @@ async def on_message(message):
 
 @client.event
 async def on_member_join(member):
-
-  welcome=[
-    f"ye ra {member.mention}, ela unnav? em book chaduvutunnav ee madhya?",
-    f"ha ha, ye ra {member.mention}, nuvvu kuda ochesava ikkadiki? ochi manchi pane chesavu le ra, em chaduvutunnav?",
-  ]
   channel = client.get_channel(890388908813213727)
   await channel.send(f"Yem maa {member.mention} bavunnava..? Ye pusthakam chaduvtunnav e madya..?")
  
