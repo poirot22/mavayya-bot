@@ -30,7 +30,10 @@ async def on_message(message):
   f"bhagavantudaa, nijayiti ga brathike {username} ni chiru navvu nunchi dooram cheyyaku...",
   f"yera {username} ela unnav, bagunnava?",
   "mee andarini ila server lo chutunte, entha haayi ga undho...",
-  f"yera {username} , bhojanam chesava?"
+  f"yera {username} , bhojanam chesava?",
+  f"ఏరా {username}, నీ లిస్ట్ లో నుండి తీసేశావా నన్ను?",
+  f"ఒరేయి {username}, దేవుణ్ణి ఏం కోరుకున్నావు రా?",
+  f"అరేయి {username}, దాటగలిగే కష్టాల్నీనీ, ఆ కష్టాల్ని దాటే ధైర్యాన్నీ ఇవ్వమని దేవుణ్ణి అడగరా!"
   ]
 
   mavayya=["mavayya","Mavayya"]
@@ -59,6 +62,10 @@ async def on_message(message):
   for i in bad_words:
     if i in mess:
       await message.channel.send(f"yenti ra {username}, yemitaa maatalu?")
+
+  if mess=="-react":
+    emoji="wholesomemavayya"
+    mess.add_reaction(emoji)
   
   #displays the avatar
   if mess == "-avatar":
