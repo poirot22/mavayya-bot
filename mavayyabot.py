@@ -3,17 +3,23 @@ import random
 import os
 from keep_online import keep_alive
 
-
 intents = discord.Intents.default()
 intents.members = True
 intents.emojis=True
 
 client=discord.Client(intents=intents)
 
-
+hg2g={
+  "killjoy":0,
+  "seegana":0,
+  "ayaan":0,
+  "debugger":0
+}
 
 @client.event
 async def on_message(message):
+
+ 
 
   username=str(message.author).split("#")[0]
   mess=message.content
@@ -71,6 +77,30 @@ async def on_message(message):
   if mess == "-avatar":
     await message.channel.send(message.author.avatar_url)
 
+  if mess == "-update hg2g":
+
+    await message.channel.send("ye ra, yenno chapter varaku?")
+
+    async def on_message(message):
+
+      if str(message.author).split("#")[0]=="KILLJOY":
+        hg2g["killjoy"]=int(message.content)
+      if str(message.author).split("#")[0]=="psychedelicpoops":
+        hg2g["seegana"]=int(message.content)
+      if str(message.author).split("#")[0]=="Ayaan":
+        hg2g["ayaan"]=int(message.content)
+      if str(message.author).split("#")[0]=="debugger":
+        hg2g["debugger"]=int(message.content)
+    
+  if mess == f"-progress {username}":
+      if username=="KILLJOY":
+        await message.channel.send(hg2g["killjoy"])
+      if username=="psychedelicpoops":
+        await message.channel.send(hg2g["seegana"])
+      if username=="Ayaan":
+        await message.channel.send(hg2g["ayaan"])
+      if username=="debugger":
+        await message.channel.send(hg2g["debugger"])
 
   #so that bot wouldn't summon itself
   if message.author==client.user:
