@@ -1,3 +1,4 @@
+
 import discord
 import random
 import os
@@ -8,6 +9,7 @@ import time
 intents = discord.Intents.default()
 intents.members = True
 intents.emojis=True
+intents.reactions=True
 
 client=discord.Client(intents=intents)
 
@@ -60,12 +62,28 @@ async def on_message(message):
   ]
 
   for i in bad_words:
-    if i in mess:
+    if i in mess or i.upper() in mess:
       await message.channel.send(f"yenti ra {username}, yemitaa maatalu?")
   
   #displays the avatar
   if mess == "-avatar":
     await message.channel.send(message.author.avatar_url)
+  
+  if mess == "-insult killjoy":
+    await message.channel.send("యే రా killjoy, బెవర్సే గా ఉన్నావంటే ఊర్కే టైంపాస్ చేయడమేనా? పనికొచ్చే పనులు ఏమన్నా చెయ్యచ్చు కదా? అన్నీ సగం నాలేడ్జి పనులు...")
+
+  if mess == "-remind killjoy to sleep":
+    await message.channel.send("orey killjoy, panduko po ra mundhu!")
+
+  if mess == "-remind killjoy to come online":
+    await message.channel.send("orey killjoy, pandukundi chalu, online ra ra!")
+  
+  admin=["admin","admeen","aadmin","yadmin","mod"]
+
+  for i in admin:
+    if i in mess and "make" in mess:
+      await message.channel.send("Provide aadhar card, 10th class participation certificate, 2 passport size photos, then mod exam pass ga... Then interview pass ga... Internship ippistha.")
+      break
 
 
   #so that bot wouldn't summon itself
@@ -89,10 +107,26 @@ async def on_message_delete(message):
   await botspam.send("ye ra, nee thappulanni ila lokaniki thelikunda daachestunnava?")'''
 
 
+@client.event
+async def on_reaction_add(reaction, user):
+  hall_of_fame=client.get_channel(911854338803109929)
+  
+  if reaction.emoji=="⭐" and reaction.count==1:
+
+    mess=reaction.message.content
+    user=reaction.message.author
+
+    pop=discord.Embed(title=f"{mess}",color=user.color)
+    pop.set_author(name=f"{user}")
+
+    await hall_of_fame.send(embed=pop)
+    
+
+
+
 
 #keeping the bot online
 my_secret = os.environ['TOKEN']
 keep_alive()
 client.run(my_secret)
-
 
