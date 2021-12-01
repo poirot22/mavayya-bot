@@ -1,4 +1,3 @@
-
 import discord
 import random
 import os
@@ -129,4 +128,6 @@ async def on_reaction_add(reaction, user):
 my_secret = os.environ['TOKEN']
 keep_alive()
 client.run(my_secret)
+
+
 
